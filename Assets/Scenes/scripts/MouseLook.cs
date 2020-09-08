@@ -22,10 +22,11 @@ public class MouseLook : MonoBehaviour
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-       
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
         if (!playerBody.isGravityChanging()) {
-            Vector3 up = Utils.normalizeDirection(transform.up);
+            Vector3 up = Utils.normalizeDirection(playerBody.transform.up);
+            
             playerBody.transform.Rotate(up, mouseX, Space.World);
         }
         
