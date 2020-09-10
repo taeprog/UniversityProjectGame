@@ -6,7 +6,7 @@ public class MouseLook : MonoBehaviour
 {
 
     public float mouseSensitivity = 100f;
-    public Control playerBody;
+    public Transform playerBody;
 
     private float xRotation = 0f;
 
@@ -24,11 +24,8 @@ public class MouseLook : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
-        if (!playerBody.isGravityChanging()) {
-            Vector3 up = Utils.normalizeDirection(playerBody.transform.up);
-            
-            playerBody.transform.Rotate(up, mouseX, Space.World);
-        }
+        Vector3 up = Utils.normalizeDirection(playerBody.up);
+        playerBody.Rotate(up, mouseX, Space.World);
         
     }
 }
