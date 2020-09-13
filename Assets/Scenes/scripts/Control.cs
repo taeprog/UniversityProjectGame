@@ -36,7 +36,7 @@ public class Control : MonoBehaviour
         isGrounded = groundChecker.isGrounded();
         if (isGrounded && verticalVelocity<0)
         {
-            verticalVelocity = 0.0f;
+            verticalVelocity = -2f;
         }
         else {
             verticalVelocity += gravity * Time.deltaTime;

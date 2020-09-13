@@ -12,6 +12,7 @@ public class GravityRotation : MonoBehaviour
     private float rotationDirection = 0;
     private float timeCount = 0.0f;
     private float angleRotated = 0.0f;
+    private float rotationMultiplyer = 1f;
     private enum RotationDirection {
         RightDirection,
         LeftDirection
@@ -46,20 +47,24 @@ public class GravityRotation : MonoBehaviour
         {
             rotationDirection = 1;
         }
+        if (rotationEnabled) {
+            rotationMultiplyer = 2f;
+        }
         rotationEnabled = true;
     }
 
     private void rotateGravity()
     {
+        float maxAngle = 90f * rotationMultiplyer;
         Vector3 normalForward = Utils.normalizeDirection(transform.forward);
-        if (angleRotated >= 90f)
+        if (angleRotated >= maxAngle)
         {
             disableRotation();
             resetValues();
         }
         else
         {
-            float angle = Mathf.Lerp(0f, 90f - angleRotated, timeCount);
+            float angle = Mathf.Lerp(0f, maxAngle - angleRotated, timeCount);
             angleRotated += angle;
             transform.Rotate(normalForward, angle * rotationDirection, Space.World);
             timeCount += Time.deltaTime*rotationSpeed;
@@ -73,5 +78,6 @@ public class GravityRotation : MonoBehaviour
         rotationDirection = 0;
         timeCount = 0.0f;
         angleRotated = 0.0f;
+        rotationMultiplyer = 1f;
     }
 }
