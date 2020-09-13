@@ -39,14 +39,17 @@ public class GravityRotation : MonoBehaviour
     }
 
     private void enableRotation(RotationDirection direction) {
-        if (direction == RotationDirection.LeftDirection)
-        {
-            rotationDirection = -1;
+        if (rotationDirection == 0.0f) {
+            if (direction == RotationDirection.LeftDirection)
+            {
+                rotationDirection = -1;
+            }
+            else
+            {
+                rotationDirection = 1;
+            }
         }
-        else 
-        {
-            rotationDirection = 1;
-        }
+        
         if (rotationEnabled) {
             rotationMultiplyer = 2f;
         }
