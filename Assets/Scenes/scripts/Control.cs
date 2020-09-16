@@ -9,6 +9,7 @@ public class Control : MonoBehaviour
 {
 
     public float speed;
+    public float dashSpeed;
     public float jumpHight = 3f;
     public float gravity=-9.81f;
     public GroundChecker groundChecker;
@@ -28,7 +29,8 @@ public class Control : MonoBehaviour
     void Update()
     {
         applyGravity();
-        characterMove();     
+        characterMove();
+        dash();
     }
 
     private void applyGravity()
@@ -59,5 +61,13 @@ public class Control : MonoBehaviour
         characterController.Move(horisontalMovement * speed * Time.deltaTime);
     }
 
+    private void dash() {
+        float horisontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        Vector3 dashDirection = transform.right * horisontal + transform.forward * vertical;
+        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+            characterController.Move(dashDirection * dashSpeed * Time.deltaTime*10);
+        }
+    }
     
 }
