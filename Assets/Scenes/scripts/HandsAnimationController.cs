@@ -27,14 +27,14 @@ public class HandsAnimationController : MonoBehaviour
         else {
             animator.SetBool("landed", false);
         }
-        //animator.SetFloat("move", Mathf.Abs(Input.GetAxis("Horizontal"))+ Mathf.Abs(Input.GetAxis("Horizontal")));
+        
         if (Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f)
         {
-            Debug.Log("a");
+            
             animator.SetFloat("move", 10f);
         }
         else {
-            Debug.Log("b");
+            
             animator.SetFloat("move", 0.0f);
         }
     }

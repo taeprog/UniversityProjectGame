@@ -6,9 +6,11 @@ public class Pause : MonoBehaviour
 {
     public GameObject pauseMenu;
     public bool isPused = false;
+
+    private AudioSource[] allAudioSources;
     void Start()
     {
-        
+        allAudioSources = FindObjectsOfType<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,6 +32,10 @@ public class Pause : MonoBehaviour
         isPused = true;
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
+
+        foreach (AudioSource audio in allAudioSources) {
+            audio.Pause();
+        }
     }
 
     public void resume() {
@@ -37,5 +43,9 @@ public class Pause : MonoBehaviour
         isPused = false;
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
+        foreach (AudioSource audio in allAudioSources)
+        {
+            audio.Play();
+        }
     }
 }
