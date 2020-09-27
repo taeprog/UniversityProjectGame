@@ -56,7 +56,6 @@ public class Control : MonoBehaviour
         }
         if (isGrounded)
         {
-            Debug.Log("Here");
             horisontalMovement = transform.right * horisontal + transform.forward * vertical;
         }
         characterController.Move(horisontalMovement * speed * Time.deltaTime);
