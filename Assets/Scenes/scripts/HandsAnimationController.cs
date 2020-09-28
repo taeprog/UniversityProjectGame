@@ -6,7 +6,10 @@ public class HandsAnimationController : MonoBehaviour
 {
     public GroundChecker groundChecker;
     public Animator animator;
+    public float fireRate = 0.8f;
     private bool isGrounded;
+    private float nextFire = 0;
+
     void Start()
     {
 
@@ -15,6 +18,7 @@ public class HandsAnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.ResetTrigger("shoot");
         if (isGrounded != groundChecker.isGrounded())
         {
             if (!isGrounded)
@@ -27,7 +31,10 @@ public class HandsAnimationController : MonoBehaviour
         else {
             animator.SetBool("landed", false);
         }
-        
+        if (Input.GetButton("Fire1") && Time.time>nextFire) {
+            nextFire = Time.time + fireRate;
+            animator.SetTrigger("shoot");
+        }
         if (Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f)
         {
             

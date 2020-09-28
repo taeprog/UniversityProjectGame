@@ -42,7 +42,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8686c911b88dbf44c986946f030a48a9, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52adc6826099e7649a0d881711ec6eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 20
   fireRate: 1
   range: 100
   muzzleFlash: {fileID: 6596045084124258212}
@@ -696,7 +696,7 @@ PrefabInstance:
     - target: {fileID: 1947947284013227751, guid: f35c07db955c3d74697b43779e2d71b8,
         type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1947947284013227751, guid: f35c07db955c3d74697b43779e2d71b8,
         type: 3}
