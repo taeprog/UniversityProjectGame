@@ -7,12 +7,10 @@ public class Weapon : MonoBehaviour
     public float damage;
     public float fireRate;
     public float range;
-    public GameObject muzzleFlash;
+    public ParticleSystem muzzleFlash;
     public Transform bulletSpawn;
     public AudioClip shotSFX;
     public AudioSource audioSource;
-
-    public Camera camera;
 
     // Start is called before the first frame update
     void Start()
@@ -32,13 +30,19 @@ public class Weapon : MonoBehaviour
     void Shoot()
     {
         audioSource.PlayOneShot(shotSFX);
-        Instantiate(muzzleFlash, bulletSpawn.position, bulletSpawn.rotation);
+        muzzleFlash.time = 0;
+        muzzleFlash.Play();
 
         RaycastHit hit;
 
-        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, range))
+        if (Physics.Raycast(bulletSpawn.transform.position, bulletSpawn.transform.forward, out hit, range))
         {
-            Debug.Log("Shot "+ hit.collider);
+            Debug.DrawRay(bulletSpawn.transform.position, hit.point, Color.red);
+            Debug.Log(hit.transform.gameObject.tag);
+            if (hit.transform.gameObject.tag == "Mortal") {
+                Health hl =hit.transform.gameObject.GetComponent<Health>();
+                if(hl != null) hl.damage(damage);
+            }
         }
     }
 }
