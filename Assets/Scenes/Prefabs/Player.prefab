@@ -502,6 +502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundChecker: {fileID: 7193482895057392638}
   animator: {fileID: 7193482896033220864}
+  fireRate: 0.8
 --- !u!1 &7193482896175391409
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,6 +545,7 @@ GameObject:
   - component: {fileID: 7193482896340926136}
   - component: {fileID: 7193482896340926137}
   - component: {fileID: 7193482896340926142}
+  - component: {fileID: 4672014833728986666}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -632,6 +634,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 350
   playerBody: {fileID: 7193482895057392632}
+--- !u!114 &4672014833728986666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193482896340926138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d202693ebde88c547a130254ede90d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPoint: {fileID: 6339837425454450008}
+  range: 1000
 --- !u!1 &7872319432329317959
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,7 +692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   fireRate: 1
-  range: 100
+  range: 1000
   muzzleFlash: {fileID: 6596045084124258212}
   bulletSpawn: {fileID: 6339837425454450008}
   shotSFX: {fileID: 8300000, guid: 8686c911b88dbf44c986946f030a48a9, type: 3}

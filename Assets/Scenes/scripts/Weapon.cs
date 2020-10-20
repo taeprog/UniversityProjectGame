@@ -37,8 +37,6 @@ public class Weapon : MonoBehaviour
 
         if (Physics.Raycast(bulletSpawn.transform.position, bulletSpawn.transform.forward, out hit, range))
         {
-            Debug.DrawRay(bulletSpawn.transform.position, hit.point, Color.red);
-            Debug.Log(hit.transform.gameObject.tag);
             if (hit.transform.gameObject.tag == "Mortal") {
                 Health hl =hit.transform.gameObject.GetComponent<Health>();
                 if(hl != null) hl.damage(damage);
