@@ -7,6 +7,7 @@ public class Weapon : MonoBehaviour
     public float damage;
     public float fireRate;
     public float range;
+    public GameObject bulletPrefab;
     public ParticleSystem muzzleFlash;
     public Transform bulletSpawn;
     public AudioClip shotSFX;
@@ -40,6 +41,17 @@ public class Weapon : MonoBehaviour
             if (hit.transform.gameObject.tag == "Mortal") {
                 Health hl =hit.transform.gameObject.GetComponent<Health>();
                 if(hl != null) hl.damage(damage);
+            }
+
+            GameObject bullet = Instantiate(bulletPrefab, muzzleFlash.transform.position, new Quaternion());
+            Bullet blt = bullet.GetComponent<Bullet>();
+            if (blt != null) {
+                blt.damage = 0;
+            }
+            Rigidbody bulletRB = bullet.GetComponent<Rigidbody>();
+            if (bulletRB != null) {
+                bulletRB.rotation = Quaternion.LookRotation(hit.point - transform.position);
+                bulletRB.AddForce(bulletSpawn.forward * 1500f);
             }
         }
     }

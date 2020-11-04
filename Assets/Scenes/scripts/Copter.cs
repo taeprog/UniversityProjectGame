@@ -13,15 +13,25 @@ public class Copter : MonoBehaviour
     
     Transform player;
     Rigidbody rb;
+    Health health;
+    Shooting shooting;
+    private bool isAttacking = false;
+    private float lastShoot;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         player = PlayerManager.instance.player.transform;
+        health = GetComponent<Health>();
+        shooting = GetComponent<Shooting>();
+        lastShoot = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (health.currentHealth <= 0) {
+            return;
+        }
         bool playerInRange;
         if (looksOnPlayer())
         {
@@ -35,16 +45,18 @@ public class Copter : MonoBehaviour
             rb.transform.LookAt(player, player.up);
             if (getRangeToPlayer() > stopDistance)
             {
-                //Vector3 movement = Vector3.MoveTowards(rb.position, player.position, Time.fixedDeltaTime * speed);
+                isAttacking = false; 
                 rb.velocity = rb.transform.forward * speed;
             }
             else
             {
+                isAttacking = true;
                 rb.velocity = new Vector3(0f, 0f, 0f);
             }
         }
-       
-        
+        if (isAttacking) {
+            attack();
+        }
         
     }
 
@@ -64,5 +76,11 @@ public class Copter : MonoBehaviour
         return Vector3.Distance(player.position, rb.transform.position);
     }
 
+    private void attack() {
+        if (Time.time - lastShoot >= 1) {
+            lastShoot = Time.time;
+            shooting.Shoot();
+        }
+    }
     
 }

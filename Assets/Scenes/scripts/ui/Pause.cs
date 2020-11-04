@@ -34,7 +34,10 @@ public class Pause : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
 
         foreach (AudioSource audio in allAudioSources) {
-            audio.Pause();
+            if (audio.isActiveAndEnabled) {
+                audio.Pause();
+            }
+            
         }
     }
 

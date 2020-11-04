@@ -284,6 +284,8 @@ GameObject:
   - component: {fileID: 7193482895057392637}
   - component: {fileID: 7193482895057392638}
   - component: {fileID: 6071933825254186063}
+  - component: {fileID: 4423301037002388525}
+  - component: {fileID: 6509862144854934459}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -364,11 +366,11 @@ CapsuleCollider:
   m_GameObject: {fileID: 7193482895057392613}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 3
+  m_Enabled: 1
+  m_Radius: 1.5
+  m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: -0.5, z: 0}
+  m_Center: {x: 0, y: -0.5, z: 1}
 --- !u!114 &7193482895057392612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,8 +383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c5fe306fccc40142900bdf35bfcd334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  dashSpeed: 50
+  speed: 18
+  dashSpeed: 70
   jumpHight: 3
   gravity: -20
   groundChecker: {fileID: 7193482895057392638}
@@ -435,6 +437,33 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: -0.5, z: 1}
+--- !u!114 &4423301037002388525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193482895057392613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38145b22634ebd74aa2a4de16abfa411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  currentHealth: 200
+  onDie: {fileID: 6509862144854934459}
+--- !u!114 &6509862144854934459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193482895057392613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e26802d09d47643a152a749ca725cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7193482896033220866
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,9 +719,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52adc6826099e7649a0d881711ec6eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 30
   fireRate: 1
   range: 1000
+  bulletPrefab: {fileID: 5846629867897152698, guid: bab758f7385af7540b2c3dd4fc57300c,
+    type: 3}
   muzzleFlash: {fileID: 6596045084124258212}
   bulletSpawn: {fileID: 6339837425454450008}
   shotSFX: {fileID: 8300000, guid: 8686c911b88dbf44c986946f030a48a9, type: 3}

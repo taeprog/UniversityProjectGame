@@ -15,4 +15,5 @@ public class StaticUIElements : MonoBehaviour
     #endregion
 
     public EnemyHealthBar enemyHealthBar;
+    public DeadWindow deadWindow;
 }
