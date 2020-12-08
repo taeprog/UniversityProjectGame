@@ -33,8 +33,11 @@ public class DeadWindow : MonoBehaviour
 
     public void restart()
     {
-       // Application.LoadLevel(Application.loadedLevel);
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        // Application.LoadLevel(Application.loadedLevel);
+        Scene scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+        
+        UnityEngine.SceneManagement.SceneManager.LoadScene(scene.name);
+        SceneManager.instance.onLoaded();
+        SceneManager.instance.cleanDrones();
     }
 }

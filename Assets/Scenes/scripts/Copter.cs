@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Copter : MonoBehaviour
 {
-
+    private int id;
     public float forwardDetectRange = 70f;
     public float detectRadius = 50f;
     public float speed = 50f;
@@ -19,12 +19,26 @@ public class Copter : MonoBehaviour
     private float lastShoot;
     void Start()
     {
+        id = (int)(transform.position.x + transform.position.y + transform.position.z);
+        onLoad();
         rb = GetComponent<Rigidbody>();
-        player = PlayerManager.instance.player.transform;
+        player = SceneManager.instance.player.transform;
         health = GetComponent<Health>();
         shooting = GetComponent<Shooting>();
         lastShoot = Time.time;
     }
+
+    public int getId() { return id; }
+
+
+    private void onLoad() {
+        if (SaveLoadSystem.gameState != null) {
+            if (Array.Find(SaveLoadSystem.gameState.Drones, (a) => a.id == id) == null) {
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
 
     // Update is called once per frame
     void Update()

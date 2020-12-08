@@ -25,6 +25,7 @@ public class MainMenuEventsListener : MonoBehaviour
 
     private void onNewGameClick()
     {
+        SaveLoadSystem.gameState = null;
         UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
         Time.timeScale = 1;
     }

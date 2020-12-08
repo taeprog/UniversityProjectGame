@@ -54,6 +54,13 @@ public class Control : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded) {
             verticalVelocity = Mathf.Sqrt(jumpHight * -2f * gravity);
         }
+        if (Input.GetKeyDown(KeyCode.R)) {
+            Time.timeScale = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Time.timeScale = Time.timeScale/2;
+        }
         if (isGrounded)
         {
             horisontalMovement = transform.right * horisontal + transform.forward * vertical;
