@@ -32,6 +32,7 @@ public class Shooting : MonoBehaviour
 
         if (Physics.Raycast(bulletSpawn.transform.position, target.forward, out hit, range))
         {
+
             GameObject bullet = Instantiate(bulletPrefab, target.position, new Quaternion());
             Bullet blt = bullet.GetComponent<Bullet>();
             if (blt != null)

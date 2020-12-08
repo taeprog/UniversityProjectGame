@@ -34,25 +34,31 @@ public class Weapon : MonoBehaviour
         muzzleFlash.time = 0;
         muzzleFlash.Play();
 
-        RaycastHit hit;
+        //RaycastHit hit;
 
-        if (Physics.Raycast(bulletSpawn.transform.position, bulletSpawn.transform.forward, out hit, range))
+        /*if (Physics.Raycast(bulletSpawn.transform.position, bulletSpawn.transform.forward, out hit, range))
         {
-            if (hit.transform.gameObject.tag == "Mortal") {
-                Health hl =hit.transform.gameObject.GetComponent<Health>();
-                if(hl != null) hl.damage(damage);
-            }
+            if (hit.transform.gameObject.tag == "Mortal") {*/
+        RaycastHit[] hits = Physics.RaycastAll(bulletSpawn.transform.position, bulletSpawn.transform.forward, 100.0F);
 
-            GameObject bullet = Instantiate(bulletPrefab, muzzleFlash.transform.position, new Quaternion());
-            Bullet blt = bullet.GetComponent<Bullet>();
-            if (blt != null) {
-                blt.damage = 0;
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.transform.gameObject.tag == "Mortal")
+            {
+                Health hl = hit.transform.gameObject.GetComponent<Health>();
+                if (hl != null) hl.damage(damage);
             }
-            Rigidbody bulletRB = bullet.GetComponent<Rigidbody>();
-            if (bulletRB != null) {
-                bulletRB.rotation = Quaternion.LookRotation(hit.point - transform.position);
-                bulletRB.AddForce(bulletSpawn.forward * 1500f);
-            }
+        }
+
+        GameObject bullet = Instantiate(bulletPrefab, muzzleFlash.transform.position, new Quaternion());
+        Bullet blt = bullet.GetComponent<Bullet>();
+        if (blt != null) {
+            blt.damage = 0;
+        }
+        Rigidbody bulletRB = bullet.GetComponent<Rigidbody>();
+        if (bulletRB != null) {
+            bulletRB.rotation = Quaternion.LookRotation(hits[0].point - transform.position);
+            bulletRB.AddForce(bulletSpawn.forward * 1500f);
         }
     }
 }

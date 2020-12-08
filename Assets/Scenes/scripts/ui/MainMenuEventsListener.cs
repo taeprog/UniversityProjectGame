@@ -32,7 +32,7 @@ public class MainMenuEventsListener : MonoBehaviour
     
     private void onResumeClick()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(SaveLoadSystem.gameState.SceneName);
     }
 
     private void onExitClick()

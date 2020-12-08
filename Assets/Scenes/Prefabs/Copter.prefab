@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 40648979546588319}
   - component: {fileID: 1542363054536689643}
   - component: {fileID: 1817315408028494456}
+  - component: {fileID: 8251110399622440146}
   m_Layer: 0
   m_Name: Copter
   m_TagString: Mortal
@@ -305,7 +306,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.6, y: 1, z: 3.6}
+  m_Size: {x: 5, y: 3, z: 4}
   m_Center: {x: -0.05, y: 0.2, z: 0}
 --- !u!114 &7118386916404337802
 MonoBehaviour:
@@ -386,6 +387,14 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5846629867897152698, guid: bab758f7385af7540b2c3dd4fc57300c,
     type: 3}
   targetTag: Mortal
+--- !u!33 &8251110399622440146
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118386916404337805}
+  m_Mesh: {fileID: -8545447256379345787, guid: 536edd59643fc3c40855e5aca7cf42aa, type: 3}
 --- !u!1 &8033978724720948700
 GameObject:
   m_ObjectHideFlags: 0

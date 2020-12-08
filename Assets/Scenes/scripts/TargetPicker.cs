@@ -15,9 +15,10 @@ public class TargetPicker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(targetPoint.position, targetPoint.forward, out hit, range))
-        {
+        
+        RaycastHit[] hits = Physics.RaycastAll(targetPoint.position, targetPoint.forward, 100.0F);
+        
+        foreach (RaycastHit hit in hits) {
             if (hit.transform.gameObject.tag == "Mortal")
             {
                 Health hl = hit.transform.gameObject.GetComponent<Health>();
@@ -29,9 +30,6 @@ public class TargetPicker : MonoBehaviour
             {
                 bar.hide();
             }
-        }
-        else {
-            bar.hide();
         }
     }
 }
